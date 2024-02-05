@@ -36,6 +36,8 @@ namespace NabWeb
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.BtnIr = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.haciaDelanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +55,9 @@ namespace NabWeb
             // 
             this.navegarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
-            this.haciaAtrasToolStripMenuItem});
+            this.haciaAtrasToolStripMenuItem,
+            this.haciaDelanteToolStripMenuItem,
+            this.salirToolStripMenuItem});
             this.navegarToolStripMenuItem.Name = "navegarToolStripMenuItem";
             this.navegarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.navegarToolStripMenuItem.Text = "Navegar";
@@ -63,17 +67,20 @@ namespace NabWeb
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
             this.inicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.inicioToolStripMenuItem.Text = "Inicio";
+            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
             // 
             // haciaAtrasToolStripMenuItem
             // 
             this.haciaAtrasToolStripMenuItem.Name = "haciaAtrasToolStripMenuItem";
             this.haciaAtrasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.haciaAtrasToolStripMenuItem.Text = "Hacia atras";
+            this.haciaAtrasToolStripMenuItem.Click += new System.EventHandler(this.haciaAtrasToolStripMenuItem_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "https://www.google.com/webhp",
             "https://www.minijuegos.com/juego/suika-game?from=lastPlayedGamesHome",
             "https://www.mesoamericana.edu.gt/"});
             this.comboBox1.Location = new System.Drawing.Point(30, 27);
@@ -99,6 +106,20 @@ namespace NabWeb
             this.webBrowser1.Size = new System.Drawing.Size(474, 314);
             this.webBrowser1.TabIndex = 3;
             // 
+            // haciaDelanteToolStripMenuItem
+            // 
+            this.haciaDelanteToolStripMenuItem.Name = "haciaDelanteToolStripMenuItem";
+            this.haciaDelanteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.haciaDelanteToolStripMenuItem.Text = "Hacia delante";
+            this.haciaDelanteToolStripMenuItem.Click += new System.EventHandler(this.haciaDelanteToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -111,6 +132,7 @@ namespace NabWeb
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Explorador Web";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -127,6 +149,8 @@ namespace NabWeb
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button BtnIr;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.ToolStripMenuItem haciaDelanteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
     }
 }
 
