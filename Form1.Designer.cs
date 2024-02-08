@@ -33,12 +33,16 @@ namespace NabWeb
             this.navegarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.haciaAtrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.haciaDelanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.BtnIr = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.haciaDelanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.webView22)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -65,16 +69,30 @@ namespace NabWeb
             // inicioToolStripMenuItem
             // 
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.inicioToolStripMenuItem.Text = "Inicio";
             this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
             // 
             // haciaAtrasToolStripMenuItem
             // 
             this.haciaAtrasToolStripMenuItem.Name = "haciaAtrasToolStripMenuItem";
-            this.haciaAtrasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.haciaAtrasToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.haciaAtrasToolStripMenuItem.Text = "Hacia atras";
             this.haciaAtrasToolStripMenuItem.Click += new System.EventHandler(this.haciaAtrasToolStripMenuItem_Click);
+            // 
+            // haciaDelanteToolStripMenuItem
+            // 
+            this.haciaDelanteToolStripMenuItem.Name = "haciaDelanteToolStripMenuItem";
+            this.haciaDelanteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.haciaDelanteToolStripMenuItem.Text = "Hacia delante";
+            this.haciaDelanteToolStripMenuItem.Click += new System.EventHandler(this.haciaDelanteToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // comboBox1
             // 
@@ -100,31 +118,44 @@ namespace NabWeb
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(39, 76);
+            this.webBrowser1.Location = new System.Drawing.Point(438, 399);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(474, 314);
+            this.webBrowser1.Size = new System.Drawing.Size(46, 50);
             this.webBrowser1.TabIndex = 3;
+            this.webBrowser1.Visible = false;
             // 
-            // haciaDelanteToolStripMenuItem
+            // webView21
             // 
-            this.haciaDelanteToolStripMenuItem.Name = "haciaDelanteToolStripMenuItem";
-            this.haciaDelanteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.haciaDelanteToolStripMenuItem.Text = "Hacia delante";
-            this.haciaDelanteToolStripMenuItem.Click += new System.EventHandler(this.haciaDelanteToolStripMenuItem_Click);
+            this.webView21.AllowExternalDrop = true;
+            this.webView21.CreationProperties = null;
+            this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView21.Location = new System.Drawing.Point(30, 93);
+            this.webView21.Name = "webView21";
+            this.webView21.Size = new System.Drawing.Size(402, 279);
+            this.webView21.Source = new System.Uri("https://www.google.com/", System.UriKind.Absolute);
+            this.webView21.TabIndex = 4;
+            this.webView21.ZoomFactor = 1D;
             // 
-            // salirToolStripMenuItem
+            // webView22
             // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            this.webView22.AllowExternalDrop = true;
+            this.webView22.CreationProperties = null;
+            this.webView22.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView22.Location = new System.Drawing.Point(352, 271);
+            this.webView22.Name = "webView22";
+            this.webView22.Size = new System.Drawing.Size(75, 23);
+            this.webView22.Source = new System.Uri("https://www.google.com/", System.UriKind.Absolute);
+            this.webView22.TabIndex = 5;
+            this.webView22.ZoomFactor = 1D;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.webView22);
+            this.Controls.Add(this.webView21);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.BtnIr);
             this.Controls.Add(this.comboBox1);
@@ -135,6 +166,8 @@ namespace NabWeb
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.webView22)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,6 +184,8 @@ namespace NabWeb
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.ToolStripMenuItem haciaDelanteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView22;
     }
 }
 
