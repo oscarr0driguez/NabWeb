@@ -120,7 +120,7 @@ namespace NabWeb
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
             this.webView21.Location = new System.Drawing.Point(12, 72);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(402, 279);
+            this.webView21.Size = new System.Drawing.Size(776, 392);
             this.webView21.Source = new System.Uri("https://www.google.com/", System.UriKind.Absolute);
             this.webView21.TabIndex = 4;
             this.webView21.ZoomFactor = 1D;

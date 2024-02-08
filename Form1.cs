@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Web.WebView2.Core;
 
 namespace NabWeb
 {
@@ -15,6 +16,13 @@ namespace NabWeb
         public Form1()
         {
             InitializeComponent();
+            this.Resize += new System.EventHandler(this.Form_Resize);
+        }
+        private void Form_Resize(object sender, EventArgs e)
+        {
+            webView21.Size = this.ClientSize - new System.Drawing.Size(webView21.Location);
+            BtnIr.Left = this.ClientSize.Width - BtnIr.Width;
+            comboBox1 .Width = BtnIr.Left - comboBox1.Left;
         }
 
         private void BtnIr_Click(object sender, EventArgs e)
@@ -54,14 +62,13 @@ namespace NabWeb
             // Navegar a la URL utilizando el WebBrowser
           //webView21.Navigate(new Uri(urlIngresada));
             webView21.CoreWebView2.Navigate(urlIngresada);
-
-
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // webBrowser1.GoHome();
-          
+            webView21.CoreWebView2.Navigate("https://www.google.com/");
+
+
         }
 
         private void haciaAtrasToolStripMenuItem_Click(object sender, EventArgs e)
