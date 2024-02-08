@@ -52,23 +52,26 @@ namespace NabWeb
             }
 
             // Navegar a la URL utilizando el WebBrowser
-            webBrowser1.Navigate(new Uri(urlIngresada));
+          //webView21.Navigate(new Uri(urlIngresada));
+            webView21.CoreWebView2.Navigate(urlIngresada);
+
 
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            webBrowser1.GoHome();
+           // webBrowser1.GoHome();
+          
         }
 
         private void haciaAtrasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            webBrowser1.GoHome();
+            webView21.GoBack();
         }
 
         private void haciaDelanteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            webBrowser1.GoHome();
+            webView21.GoForward();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -79,7 +82,7 @@ namespace NabWeb
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 0;
-            webBrowser1.GoHome();
+           // webBrowser1.GoHome();
         }
     }
 }
