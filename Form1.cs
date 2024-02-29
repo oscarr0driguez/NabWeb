@@ -15,7 +15,8 @@ namespace NabWeb
     public partial class Form1 : Form
     {
         List<Url> ListUrl = new List<Url>();
-        string fileName = @"C:\Users\Oscar_Rodriguez\Desktop\progra 3 \Historial.txt";
+        string fileName = @"C:\Users\Oscar_Rodriguez\Desktop\progra 3 2024\NabWeb\bin\Debug \Historial.txt";
+
 
         public Form1()
         {
@@ -66,39 +67,54 @@ namespace NabWeb
             // Navegar a la URL utilizando el WebBrowser
           //webView21.Navigate(new Uri(urlIngresada));
             webView21.CoreWebView2.Navigate(urlIngresada);
+            Guardar(@"C:\Users\Oscar_Rodriguez\Desktop\progra 3 2024\NabWeb\bin\Debug\Historial.txt", comboBox1.Text);
         }
+
         private void Leer()
         {
-            
-            FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-            StreamReader reader = new StreamReader(stream);
-            while(reader.Peek() > -1)
+            string fileName = @"C:\Users\Oscar_Rodriguez\Desktop\progra 3 2024\NabWeb\bin\Debug\Historial.txt";
+            FileStream flujo = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Read);
+            StreamReader lector = new StreamReader(flujo);
+            ListUrl.Clear();
+
+            while (lector.Peek() > -1)
             {
                 Url url = new Url();
-                url.Url = reader.ReadLine();
-                url.Veces = Convert.ToInt32(reader.ReadLine());
-                url.Fecha = Convert.ToDateTime(reader.ReadLine());
-                urls.Add(url);
-
+                url.Pagina = lector.ReadLine();
+                string veces = Convert.ToString(lector.ReadLine());
+                url.Veces = Convert.ToInt32(veces);
+                url.Fecha = Convert.ToDateTime(lector.ReadLine());
+                //string textoLeido = lector.ReadLine();
+                //comboBox1.Items.Add(textoLeido);
+                ListUrl.Add(url);
             }
-            reader.Close();
+            lector.Close();
 
+            comboBox1.DisplayMember = "Pagina";
+            comboBox1.DataSource = ListUrl;
+            comboBox1.Refresh();
         }
 
-        private void Guardar(string Nombre, string texto)
+
+        private void Guardar(string fileName, string texto)
         {
-            FileStream flujo = new FileStream(NombreArchivo, FileMode.OpenOrCreate, FileAccess.Write);
-            StreamWriter escritor = new StreamWriter(flujo);
-            foreach(URL url in urls){
-                escritor.WriteLine(url.Url);
-                escritor.WriteLine(url.Url);
-                escritor.WriteLine(url.Url);
-
+            FileStream flujo = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter lector = new StreamWriter(flujo);
+            foreach (Url url in ListUrl)
+            {
+                lector.WriteLine(url.Pagina);
+                lector.WriteLine(url.Veces);
+                lector.WriteLine(url.Fecha);
             }
-            escritor.Close();
+            lector.Close();
 
+
+            /*
+            FileStream stream = new FileStream(fileName, FileMode.Append, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            writer.WriteLine(texto);
+            writer.Close();*/
         }
-
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             webView21.CoreWebView2.Navigate("https://www.google.com/");
@@ -124,6 +140,7 @@ namespace NabWeb
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 0;
+            Leer();
            // webBrowser1.GoHome();
         }
     }
