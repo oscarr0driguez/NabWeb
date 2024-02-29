@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,9 @@ namespace NabWeb
 {
     public partial class Form1 : Form
     {
+        List<Url> ListUrl = new List<Url>();
+        string fileName = @"C:\Users\Oscar_Rodriguez\Desktop\progra 3 \Historial.txt";
+
         public Form1()
         {
             InitializeComponent();
@@ -62,6 +66,37 @@ namespace NabWeb
             // Navegar a la URL utilizando el WebBrowser
           //webView21.Navigate(new Uri(urlIngresada));
             webView21.CoreWebView2.Navigate(urlIngresada);
+        }
+        private void Leer()
+        {
+            
+            FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(stream);
+            while(reader.Peek() > -1)
+            {
+                Url url = new Url();
+                url.Url = reader.ReadLine();
+                url.Veces = Convert.ToInt32(reader.ReadLine());
+                url.Fecha = Convert.ToDateTime(reader.ReadLine());
+                urls.Add(url);
+
+            }
+            reader.Close();
+
+        }
+
+        private void Guardar(string Nombre, string texto)
+        {
+            FileStream flujo = new FileStream(NombreArchivo, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter escritor = new StreamWriter(flujo);
+            foreach(URL url in urls){
+                escritor.WriteLine(url.Url);
+                escritor.WriteLine(url.Url);
+                escritor.WriteLine(url.Url);
+
+            }
+            escritor.Close();
+
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
